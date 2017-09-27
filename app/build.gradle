@@ -30,7 +30,6 @@ android {
 
 dependencies {
     implementation project(':gendapter')
-    implementation project(':annotations')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"

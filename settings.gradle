@@ -1,1 +1,1 @@
-include ':app', ':gendapter', ':annotations'
+include ':app', ':gendapter'
