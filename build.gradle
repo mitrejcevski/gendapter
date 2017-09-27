@@ -1,5 +1,5 @@
 buildscript {
-    ext.support_version = '26.0.2'
+    ext.support_version = '26.1.0'
     repositories {
         google()
         jcenter()
