@@ -8,6 +8,14 @@ import javax.lang.model.element.TypeElement;
 
 public class Tools {
 
+    public static ClassName nonNull() {
+        return className("android.support.annotation", "NonNull");
+    }
+
+    public static ClassName nullable() {
+        return className("android.support.annotation", "Nullable");
+    }
+
     public static ClassName stringRes() {
         return className("android.support.annotation", "StringRes");
     }

@@ -1,9 +1,12 @@
 package nl.jovmit.gendapter.processor.data;
 
+import android.support.annotation.NonNull;
+
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;
 
@@ -19,6 +22,7 @@ import static nl.jovmit.gendapter.processor.tools.Tools.bestGuess;
 import static nl.jovmit.gendapter.processor.tools.Tools.layoutInflater;
 import static nl.jovmit.gendapter.processor.tools.Tools.layoutRes;
 import static nl.jovmit.gendapter.processor.tools.Tools.list;
+import static nl.jovmit.gendapter.processor.tools.Tools.nonNull;
 import static nl.jovmit.gendapter.processor.tools.Tools.parameterized;
 import static nl.jovmit.gendapter.processor.tools.Tools.recyclerViewAdapter;
 import static nl.jovmit.gendapter.processor.tools.Tools.toClassName;
@@ -87,8 +91,14 @@ class AdapterClass {
         return MethodSpec.methodBuilder("createViewHolder")
                 .addModifiers(Modifier.PROTECTED, Modifier.ABSTRACT)
                 .returns(viewHolderType)
-                .addParameter(view(), "view")
+                .addParameter(viewParameter())
                 .build();
+    }
+
+    @NonNull
+    private ParameterSpec viewParameter() {
+        return ParameterSpec.builder(view(), "view")
+                .addAnnotation(nonNull()).build();
     }
 
     private MethodSpec onCreateViewHolderMethod(ClassName viewHolderType) {

@@ -18,6 +18,7 @@ import javax.lang.model.util.Elements;
 import static nl.jovmit.gendapter.processor.tools.Tools.colorRes;
 import static nl.jovmit.gendapter.processor.tools.Tools.context;
 import static nl.jovmit.gendapter.processor.tools.Tools.contextCompat;
+import static nl.jovmit.gendapter.processor.tools.Tools.nonNull;
 import static nl.jovmit.gendapter.processor.tools.Tools.recyclerViewHolder;
 import static nl.jovmit.gendapter.processor.tools.Tools.stringRes;
 import static nl.jovmit.gendapter.processor.tools.Tools.toClassName;
@@ -42,7 +43,7 @@ class ViewHolderClass {
     void generate() throws IOException {
         String holderClassName = className.getSimpleName().toString() + suffix;
         TypeSpec holderClass = buildHolderClass(holderClassName, itemType);
-        JavaFile javaFile = JavaFile.builder(elementUtils.getPackageOf(itemType).toString(), holderClass).build();
+        JavaFile javaFile = JavaFile.builder(elementUtils.getPackageOf(className).toString(), holderClass).build();
         javaFile.writeTo(filer);
     }
 
@@ -75,8 +76,14 @@ class ViewHolderClass {
         return MethodSpec.methodBuilder("bind")
                 .addModifiers(Modifier.PROTECTED, Modifier.ABSTRACT)
                 .returns(void.class)
-                .addParameter(toClassName(superClassElement), "item")
+                .addParameter(itemParameter(superClassElement))
                 .build();
+    }
+
+    @NonNull
+    private ParameterSpec itemParameter(TypeElement superClassElement) {
+        return ParameterSpec.builder(toClassName(superClassElement), "item")
+                .addAnnotation(nonNull()).build();
     }
 
     private MethodSpec getContextMethod() {
