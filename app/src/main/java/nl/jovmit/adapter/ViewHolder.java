@@ -1,5 +1,6 @@
 package nl.jovmit.adapter;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +17,7 @@ public class ViewHolder extends BaseAdapterViewHolder {
     }
 
     @Override
-    protected void bind(RecyclerItem item) {
+    protected void bind(@NonNull RecyclerItem item) {
         Person person = (Person) item;
         firstName.setText(person.getFirstName());
         lastName.setText(person.getLastName());

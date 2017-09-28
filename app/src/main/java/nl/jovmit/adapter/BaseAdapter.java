@@ -1,5 +1,6 @@
 package nl.jovmit.adapter;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import nl.jovmit.gendapter.annotations.RecyclerAdapter;
@@ -13,7 +14,7 @@ public class BaseAdapter extends BaseGendapter {
     }
 
     @Override
-    protected BaseAdapterViewHolder createViewHolder(View view) {
+    protected BaseAdapterViewHolder createViewHolder(@NonNull View view) {
         return new ViewHolder(view);
     }
 }
