@@ -17,11 +17,11 @@ To get started, in the main `build.gradle` file we need to add `jitpack` reposit
 ```groovy
 
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 and in the app module's `build.gradle` we need to add the library dependency:
