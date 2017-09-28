@@ -42,7 +42,7 @@ public class BaseAdapter {
     
 }
 ```
-The `itemType` in the annotation is used to define the type of the data items that are going to be hold in the adapter.
+The `itemType` in the annotation is used to define the type of the data items that are going to be held in the adapter.
 Then we need to build the project in order for the classes to get generated. Once that's done, we can simply extend the generated adapter class in the same file:
 
 ```java
