@@ -134,8 +134,8 @@ public class SampleActivity extends AppCompatActivity {
 }
 ```
 
-###ProGuard
-If the project using this library enabled proguard, the proguard file should include the following configuration
+### ProGuard
+If the project using this library enables proguard, the proguard file should include the following configuration
 ```proguard
 -dontwarn nl.jovmit.gendapter.**
 -dontwarn com.squareup.javapoet.**
